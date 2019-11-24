@@ -1,0 +1,35 @@
+body {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    background: #f6fff1;
+}
+.contenu {
+    max-width: 80%;
+    margin-left: 20%;
+    padding: 3%;
+    padding-top: 5%;
+    display:block;
+}
+#cardstocks {
+    margin-right: 1%;
+    display: inline-flex;
+    margin-bottom: 1%;
+}
+
+.shadow {
+    padding: 0 !important;
+}
+
+#success:target {
+	display:block;
+}
+#success {
+	display:none;
+}
+#error:target {
+	display:block;
+}
+#error {
+	display:none;
+}

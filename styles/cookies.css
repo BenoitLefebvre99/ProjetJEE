@@ -1,0 +1,7 @@
+#cookies {
+    position: fixed;
+    z-index: 1500;
+    width: 100%;
+    text-align: center;
+    bottom: -1%;
+}

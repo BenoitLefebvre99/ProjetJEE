@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<HTML>
+<head>
+   <META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+   <TITLE>Projet Web</TITLE>
+
+    <!-- Imports bootstrapCSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- Imports perso-->
+    <link rel="stylesheet" href="styles/sidebar.css" >
+    <link rel="stylesheet" href="styles/navbar.css" >
+    <link rel="stylesheet" href="styles/general.css" >
+    <link rel="stylesheet" href="styles/cookies.css">
+
+    <!-- Imports BootstrapJS-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+   
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+      <a class="navbar-brand" href="index"><h1>Gestion de commerces</h1></a>
+      <a href="contHelp.html" class="btn btn-info" id="help">Aide</a>
+    </nav>
+
+      <div class="d-flex flex-column bd-highlight mb-3" id="sidebar">
+        
+        <div class="menuMagasins"><div class="p-2 bd-highlight" ><h3>Gestion Magasins</h3></div>
+          <div class="submenuMagasins">
+            <div class="p-3 bd-highlight"><h4><a href="contAjoMagasin"># Créer un magasin</a></h4></div>
+            <div class="p-3 bd-highlight"><h4><a href="contMagasins"># Voir les magasins</a></h4></div>
+          </div>
+        </div>
+
+        <div class="menuGerant"><div class="p-2 bd-highlight" ><h3>Gestion Gérants</h3></div>
+          <div class="submenuGerant">
+            <div class="p-3 bd-highlight"><h4><a href="contAjoGerant"># Ajouter un gérant</a></h4></div>
+            <div class="p-3 bd-highlight"><h4><a href="contGerant"># Voir liste gérants</a></h4></div>
+          </div>
+        </div>
+
+          <div class="menuFournitures"><div class="p-2 bd-highlight" id="menuFournitures"><h3>Gestion Fournitures</h3></div>
+          <div class="submenuFournitures">
+            <div class="p-3 bd-highlight"><h4><a href="contAjoFournitures"># Acheter des fournitures</a></h4></div>
+            <div class="p-3 bd-highlight"><h4><a href="contFournitures"># Voir liste fournitures</a></h4></div>
+         </div>
+        </div>
+     
+        <div class="credits">
+          <h4>Novembre 2019</h4>
+          <div id="auteurs">
+            # Aimé Marcant <br>
+            # Benoit Lefebvre <br>
+            # Omar Dialo <br>
+            # William Jacquot
+          </div>
+        </div>        
+      </div>
+
+    <div class="contenu" id="contHelp">
+      <h1>Besoin d'aide ?</h1>
+      <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                 Gestion des Magasins
+                </button>
+              </h2>
+            </div>
+        
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                # Créer un magasin <hr>
+                # Voir les magasins
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Gestion des Gérants
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                # Ajouter un gérants <hr>
+                # Voir la liste des gérants
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Gestion de Fournitures
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                # Acheter une / des fournitures <hr>
+                # Voir la liste de fourniture 
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+      <div class="alert alert-warning alert-dismissible fade show" id="cookies" role="alert">
+          <strong>Cookies pour tous !</strong> Ce site est susceptible d'utiliser des cookies pour ses performances.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+</body>
+</HTML>

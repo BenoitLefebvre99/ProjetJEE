@@ -1,0 +1,136 @@
+<div class="contenu" id="contAjoFournitures">
+    <h1>Acheter une ressource</h1>
+    <!-- Alertes à afficher au bon moment-->
+    <div class="shadow p-3 mb-5 bg-white rounded" id="success">
+        <div class="alert alert-success" role="alert">
+            Bravo ! La fourniture vient d'être achetée !
+        </div>
+    </div>
+    <div class="shadow p-3 mb-5 bg-white rounded" id="error">
+        <div class="alert alert-danger" role="alert">
+            Un problème est survenu ...
+        </div>
+    </div>
+    <!-- Il faut créer le champ invisible id -->
+    <div class="shadow p-3 mb-5 bg-white rounded">
+        <div class="card" >
+            <div class="card-body">
+                <form method="POST" action="WEB-INF/classes/ajoutFourniture">
+                    <div class="form-row" style="float:right;">
+                        <div class="dropdown" >
+
+                            <button class="btn btn-info btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tous les magasins
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Magasin 1</a>
+                                <a class="dropdown-item" href="#">Magasin 2</a>
+                                <a class="dropdown-item" href="#">Magasin 3</a>
+                                <a class="dropdown-item" href="#">Ajouter un Magasin</a>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-success" style="float: right;">Acheter <span class="badge badge-light">4</span></button>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prix Unitaire</th>
+                            <th scope="col">Quantité</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Papier <span class="badge badge-secondary">New</span></th>
+                            <td>0.10 €</td>
+                            <td> <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="inputQuantite" value="0">
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Crayon</th>
+                            <td>1 €</td>
+                            <td> <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="inputQuantite" value="0">
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Voiture</th>
+                            <td>15 000 €</td>
+                            <td><div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="inputQuantite" value="0">
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Papier <span class="badge badge-secondary">New</span></th>
+                            <td>0.10 €</td>
+                            <td> <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="inputQuantite" value="0">
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Crayon</th>
+                            <td>1 €</td>
+                            <td> <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="inputQuantite" value="0">
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Voiture</th>
+                            <td>15 000 €</td>
+                            <td><div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="inputQuantite" value="0">
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Papier <span class="badge badge-secondary">New</span></th>
+                            <td>0.10 €</td>
+                            <td> <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="inputQuantite" value="0">
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Crayon</th>
+                            <td>1 €</td>
+                            <td> <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="inputQuantite" value="0">
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Voiture</th>
+                            <td>15 000 €</td>
+                            <td><div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="inputQuantite" value="0">
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Papier <span class="badge badge-secondary">New</span></th>
+                            <td>0.10 €</td>
+                            <td> <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="inputQuantite" value="0">
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Crayon</th>
+                            <td>1 €</td>
+                            <td> <div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="inputQuantite" value="0">
+                            </div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Voiture</th>
+                            <td>15 000 €</td>
+                            <td><div class="form-group col-md-4">
+                                <input type="text" class="form-control" id="inputQuantite" value="0">
+                            </div></td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button type="submit" class="btn btn-lg btn-success" style="float: right;">Acheter  <span class="badge badge-light">4</span></button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
