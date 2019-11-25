@@ -38,3 +38,7 @@ export CLASSPATH
 
 Il faut se connecter en ssh sur votre VM et modifier le fichier pg_hba.conf.
 Lien de dépannage : [lien](https://confluence.atlassian.com/jirakb/error-connecting-to-database-fatal-no-pg_hba-conf-entry-for-host-x-x-x-x-user-jiradbuser-database-jiradb-ssl-off-950801726.html)
+
+## Travail restant
+* [ ]  Configurer le fichier WEB-INF/web.xml
+* 
