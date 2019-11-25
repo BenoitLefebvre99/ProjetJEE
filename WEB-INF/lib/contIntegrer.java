@@ -182,7 +182,7 @@ public class contIntegrer {
     }
     public String getHelp(){
         try {
-            FileReader fr = new FileReader(this.formAjoFournitures);
+            FileReader fr = new FileReader(this.help);
             this.bf = new BufferedReader(fr);
             this.sb = new StringBuilder();
             try {
