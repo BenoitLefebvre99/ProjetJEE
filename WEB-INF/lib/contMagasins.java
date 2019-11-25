@@ -31,15 +31,28 @@ public class contMagasins extends HttpServlet {
                 bdd c = new bdd();
                 Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
-                int calculCA =0;
+                //ON RECUPERE LE NOMBRE DE MAGASINS CONTENUS PAR LA BDD
+                int nombreMagasins =0;
+                String sql = "SELECT COUNT(*) "+
+                    "FROM magasins;";
+                stat = conn.createStatement();
+                rs = stat.executeQuery(sql);
+
+                while(rs.next()){
+                    nombreMagasins = Integer.parseInt(rs.getString(1));
+                }
+                
+                //ON CALCUL LES CA PAR MAGASINS
+                int[] magasinsCA = new int[nombreMagasins];
+                sql = "";
 
                 //ON RECUPERE LE CONTENU DES CARDS DANS LA BDD
-                String sql = "SELECT * "+
+                sql = "SELECT * "+
                     "FROM magasin AS m, gerant AS g"+
                     "WHERE m.id_gerant = g.id_gerant "+
                     "ORDER BY id ASC;";
-                Statement stat = conn.createStatement();
-                ResultSet rs = stat.executeQuery(sql);
+                stat = conn.createStatement();
+                rs = stat.executeQuery(sql);
                 String gerant="";
 
                 //ON AFFICHE LES CARDS
