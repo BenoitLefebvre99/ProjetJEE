@@ -4,6 +4,7 @@ import javax.servlet.annotation.*;
 import java.io.*;
 import java.sql.*;
 import org.unbescape.html.HtmlEscape;
+import java.util.ArrayList;
 @WebServlet("/contMagasins")
 public class contMagasins extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res)
@@ -32,21 +33,15 @@ public class contMagasins extends HttpServlet {
                 Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
                 //ON RECUPERE LE NOMBRE DE MAGASINS CONTENUS PAR LA BDD
-                int nombreMagasins =0;
-                String sql = "SELECT COUNT(*) "+
+                ArrayList<CA> listCA = new ArrayList<CA>();
+                String sql = "SELECT * "+
                     "FROM magasin;";
                 Statement stat = conn.createStatement();
                 ResultSet rs = stat.executeQuery(sql);
-
                 while(rs.next()){
-                    nombreMagasins = Integer.parseInt(rs.getString(1));
+                    listCA.add(new CA(rs.getInt("id")));
                 }
                 
-                //ON CALCUL LES CA PAR MAGASINS
-                int[] magasinsCA = new int[nombreMagasins];
-                sql = "";
-
-                int calculCA =0;
                 //ON RECUPERE LE CONTENU DES CARDS DANS LA BDD
                 sql = "SELECT * FROM magasin AS m INNER JOIN gerant AS g ON m.id_gerant = g.id_gerant "+
                     "ORDER BY id ASC;";
@@ -63,7 +58,12 @@ public class contMagasins extends HttpServlet {
                     out.println("<h5 class=\"card-title\">"+rs.getString("nom_magasin")+"</h5>");
                     out.println("<h6 class=\"card-subtitle mb-2 text-muted\">"+rs.getString("nom_gerant")+" " +rs.getString("prenom_gerant")+"</h6>");
                     out.println("<p class=\"card-text\">"+rs.getString("adresse_magasin")+"</p>");
-                    out.println("<p class=\"card-text\">Valeur totale : "+calculCA+" €</p>");
+
+                    for(int i=0; i<listCA.size(); i++){
+                        if(listCA.get(i).isItMe(rs.getInt("id")))
+                            out.println("<p class=\"card-text\">Valeur totale : "+listCA.get(i).getChiffreAffaire()+" euros.</p>");
+                    }
+                    
                     out.println("<p class=\"card-text\">"+rs.getString("remarques_magasin")+"</p>");
 
                     out.println("<a href=\"contGerant.html\" class=\"btn btn-info\">Gérant</a>");
