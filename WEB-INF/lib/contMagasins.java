@@ -35,8 +35,8 @@ public class contMagasins extends HttpServlet {
                 int nombreMagasins =0;
                 String sql = "SELECT COUNT(*) "+
                     "FROM magasins;";
-                stat = conn.createStatement();
-                rs = stat.executeQuery(sql);
+                Statement stat = conn.createStatement();
+                ResultSet rs = stat.executeQuery(sql);
 
                 while(rs.next()){
                     nombreMagasins = Integer.parseInt(rs.getString(1));
@@ -46,6 +46,7 @@ public class contMagasins extends HttpServlet {
                 int[] magasinsCA = new int[nombreMagasins];
                 sql = "";
 
+                int calculCA =0;
                 //ON RECUPERE LE CONTENU DES CARDS DANS LA BDD
                 sql = "SELECT * "+
                     "FROM magasin AS m, gerant AS g"+
