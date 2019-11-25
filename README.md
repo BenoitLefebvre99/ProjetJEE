@@ -8,7 +8,10 @@
  Ce dernier contient la structure de la base de données mais aussi quelques exemples permettant de tester l'application.
  Il vous faut bien évidemment un serveur [Tomcat](https://tomcat.apache.org/download-70.cgi). 
 
-## Compilation des fichiers java
+### La tâche est maintenant simplifée grâce au script WEB-INF/compilation.sh qui éteint puis démarre tomcat8 et compile les fichiers 
+
+
+## Compilation des fichiers java (Optionnel si vous utilisez compilation.sh)
 
  Le projet a besoin de certaines librairies qui ne sont pas disponibles par défaut. Nous les avons ajouté au dossier WEB-INF/lib.
 
@@ -20,8 +23,6 @@ export CLASSPATH
 
 
  Puis éxécuter :` source .bashrc`
-
-### La tâche est maintenant simplifée grâce au script WEB-INF/compilation.sh qui éteint puis démarre tomcat8 et compile les fichiers 
 
 ## Configuration de la VM
 
