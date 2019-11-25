@@ -34,7 +34,7 @@ public class contMagasins extends HttpServlet {
                 //ON RECUPERE LE NOMBRE DE MAGASINS CONTENUS PAR LA BDD
                 int nombreMagasins =0;
                 String sql = "SELECT COUNT(*) "+
-                    "FROM magasins;";
+                    "FROM magasin;";
                 Statement stat = conn.createStatement();
                 ResultSet rs = stat.executeQuery(sql);
 
@@ -48,9 +48,7 @@ public class contMagasins extends HttpServlet {
 
                 int calculCA =0;
                 //ON RECUPERE LE CONTENU DES CARDS DANS LA BDD
-                sql = "SELECT * "+
-                    "FROM magasin AS m, gerant AS g"+
-                    "WHERE m.id_gerant = g.id_gerant "+
+                sql = "SELECT * FROM magasin AS m INNER JOIN gerant AS g ON m.id_gerant = g.id_gerant "+
                     "ORDER BY id ASC;";
                 stat = conn.createStatement();
                 rs = stat.executeQuery(sql);
@@ -80,6 +78,7 @@ public class contMagasins extends HttpServlet {
             }catch(Exception e){
                 out.println(e.getMessage());
             }
+            out.println("</div>");
             String cookies = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.COOKIES));
             out.println(cookies);
 
