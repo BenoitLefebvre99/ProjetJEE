@@ -54,6 +54,6 @@ Il faut mettre un "x" pour valider la tâche quand vous avez fini.
 * [ ]  /traitementAjoutMagasin
 * [ ]  compatibilité windows (compilation.sh -> compilation.bat) OPTIONNEL
 * [ ]  faire un favicon.ico ... stylé de préférences
-* [ ]  /createCookie crée un cookie de durée 1jour appelé "TermsAgreed"
-* [ ]  ajouter bouton "J'accepte" (Bootstrap 'Info') -> /createCookie
-* [ ]  la bannière cookies.html doit disparaître lorsqu'un cookie non périmé est présent
+* [ ]  /createCookie crée un cookie de durée 1jour appelé "TermsAgreed" BENOIT
+* [x]  ajouter bouton "J'accepte" (Bootstrap 'Info') -> /createCookie BENOIT
+* [ ]  la bannière cookies.html doit disparaître lorsqu'un cookie non périmé est présent BENOIT
