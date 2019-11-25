@@ -20,7 +20,7 @@ public class CA {
             
             String sql = "SELECT SUM(mpf.quantite_stock * f.prix_unitaire_fourniture)"+
                         " FROM magasin AS m, magasin_possede_fourniture AS mpf, fourniture AS f "+
-                        " WHERE mpf.id_magasin = "+this.idMagasin+" "+
+                        " WHERE mpf.id_magasin = '"+this.idMagasin+"' "+
                         " AND mpf.id_magasin = m.id"+
                         " AND mpf.id_fourniture = f.id_fourniture;";
                         
