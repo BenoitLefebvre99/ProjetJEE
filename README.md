@@ -44,7 +44,7 @@ Lien de dépannage : [lien](https://confluence.atlassian.com/jirakb/error-connec
 ### Mettez votre nom à côté de la tâche sélectionnée et contactez moi si vous avez des questions 
 Il faut mettre un "x" pour valider la tâche quand vous avez fini.
 * [ ]  Configurer le fichier WEB-INF/web.xml (redirection des pages et accueil sur /index)
-* [ ]  /contMagasins (mettre lien + CA calculé par rapport aux fournitures) BENOIT
+* [x]  /contMagasins (CA calculé par rapport aux fournitures) BENOIT
 * [ ]  /contHelp (compléter les trois parties de présentation)
 * [ ]  /contFournitures (mettre liens)
 * [ ]  /contGerant (mettre lien "supprimer" -> /licencier)
