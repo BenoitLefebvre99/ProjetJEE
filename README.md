@@ -52,7 +52,7 @@ Lien de dépannage : [lien](https://confluence.atlassian.com/jirakb/error-connec
 * [ ]  /traitementAjoutGerant
 * [ ]  /traitementAjoutMagasin
 * [ ]  compatibilité windows (compilation.sh -> compilation.bat) OPTIONNEL
-* [ ]  faire un favicon.ico ... stylé de préférences
+* [x]  faire un favicon.ico ... stylé de préférences
 * [ ]  /createCookie crée un cookie de durée 1jour appelé "TermsAgreed"
 * [ ]  ajouter bouton "J'accepte" (Bootstrap 'Info') -> /createCookie
 * [ ]  la bannière cookies.html doit disparaître lorsqu'un cookie non périmé est présent
