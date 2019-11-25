@@ -41,7 +41,7 @@ Lien de dépannage : [lien](https://confluence.atlassian.com/jirakb/error-connec
 
 ## Travail restant
 ### Mettez votre nom à côté de la tâche sélectionnée et contactez moi si vous avez des questions 
-
+Il faut mettre un "x" pour valider la tâche quand vous avez fini.
 * [ ]  Configurer le fichier WEB-INF/web.xml (redirection des pages et accueil sur /index)
 * [ ]  /contMagasins (mettre lien + CA calculé par rapport aux fournitures)
 * [ ]  /contHelp (compléter les trois parties de présentation)
@@ -52,7 +52,7 @@ Lien de dépannage : [lien](https://confluence.atlassian.com/jirakb/error-connec
 * [ ]  /traitementAjoutGerant
 * [ ]  /traitementAjoutMagasin
 * [ ]  compatibilité windows (compilation.sh -> compilation.bat) OPTIONNEL
-* [x]  faire un favicon.ico ... stylé de préférences
+* [ ]  faire un favicon.ico ... stylé de préférences
 * [ ]  /createCookie crée un cookie de durée 1jour appelé "TermsAgreed"
 * [ ]  ajouter bouton "J'accepte" (Bootstrap 'Info') -> /createCookie
 * [ ]  la bannière cookies.html doit disparaître lorsqu'un cookie non périmé est présent
