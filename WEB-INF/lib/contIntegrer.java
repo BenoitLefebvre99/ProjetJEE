@@ -16,6 +16,7 @@ public class contIntegrer {
     private String formAjoMagasin = this.path + "formAjoMagasin.html";
     private String formAjoGerant = this.path + "formAjoGerant.html";
     private String formAjoFournitures = this.path + "formAjoFournitures.html";
+    private String help = this.path + "contHelp.html";
     private BufferedReader bf;
     private StringBuilder sb;
     private String resp, line;
@@ -161,6 +162,25 @@ public class contIntegrer {
     }
 
     public String getFormAjoFournitures(){
+        try {
+            FileReader fr = new FileReader(this.formAjoFournitures);
+            this.bf = new BufferedReader(fr);
+            this.sb = new StringBuilder();
+            try {
+                while((line = this.bf.readLine()) !=null)
+                    this.resp= HtmlEscape.escapeHtml5(this.sb.append(line)+"") +" \n";
+            }catch(IOException eio){
+                return eio.getMessage();
+            }
+        }catch(FileNotFoundException e){
+            return e.getMessage();
+        }
+        String result =this.resp;
+        this.resp="";
+        this.line="";
+        return result;
+    }
+    public String getHelp(){
         try {
             FileReader fr = new FileReader(this.formAjoFournitures);
             this.bf = new BufferedReader(fr);
