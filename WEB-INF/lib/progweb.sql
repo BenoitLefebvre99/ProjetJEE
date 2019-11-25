@@ -66,7 +66,6 @@ CREATE TABLE magasin (
   id_gerant INTEGER NOT NULL,
   adresse_magasin text NOT NULL,
   remarques_magasin text NOT NULL,
-  CA_magasin INTEGER NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -74,9 +73,9 @@ CREATE TABLE magasin (
 -- Déchargement des données de la table magasin
 --
 
-INSERT INTO magasin (id, nom_magasin, id_gerant, adresse_magasin, remarques_magasin, CA_magasin) VALUES
-(1, 'Ollivander', 5, 'Quelque part dans le monde des sorciers.', 'Il existe pas vraiment en fait...', 60000),
-(2, 'Pokéshop', 2, 'Quelque part sur Khoto', 'Il existe pas vraiment non plus à vrai dire...', 45000);
+INSERT INTO magasin (id, nom_magasin, id_gerant, adresse_magasin, remarques_magasin) VALUES
+(1, 'Ollivander', 5, 'Quelque part dans le monde des sorciers.', 'Il existe pas vraiment en fait...'),
+(2, 'Pokéshop', 2, 'Quelque part sur Khoto', 'Il existe pas vraiment non plus à vrai dire...');
 
 -- --------------------------------------------------------
 

@@ -13,20 +13,20 @@ public class contHelp extends HttpServlet {
         PrintWriter out = res.getWriter();
         //ON ENVOIE LA FORME PROPRE AU SITE ET DISPONIBLE SUR TOUTES LES PAGES
         out.println("<html>");
-        String head = HtmlEscape.unescapeHtml(include.getHead());
+        String head = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.HEAD));
         out.println(head);
         out.println("<body>");
-        String navbar = HtmlEscape.unescapeHtml(include.getNavbar());
+        String navbar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.NAVBAR));
         out.println(navbar);
-        String sidebar = HtmlEscape.unescapeHtml(include.getSidebar());
+        String sidebar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.SIDEBAR));
         out.println(sidebar);
 
         //ON ENVOIE LA PARTIE INTERNE ET SPECIFIQUE A LA PAGE
-        String help = HtmlEscape.unescapeHtml(include.getHelp());
+        String help = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.HELP));
         out.println(help);
 
 
-        String cookies = HtmlEscape.unescapeHtml(include.getCookies());
+        String cookies = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.COOKIES));
         out.println(cookies);
 
         out.println("</body>");

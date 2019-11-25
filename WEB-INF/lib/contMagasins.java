@@ -13,16 +13,17 @@ public class contMagasins extends HttpServlet {
             PrintWriter out = res.getWriter();
             //ON ENVOIE LA FORME PROPRE AU SITE ET DISPONIBLE SUR TOUTES LES PAGES
             out.println("<html>");
-            String head = HtmlEscape.unescapeHtml(include.getHead());
+            String head = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.HEAD));
             out.println(head);
             out.println("<body>");
-            String navbar = HtmlEscape.unescapeHtml(include.getNavbar());
+            String navbar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.NAVBAR));
             out.println(navbar);
-            String sidebar = HtmlEscape.unescapeHtml(include.getSidebar());
+            String sidebar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.SIDEBAR));
             out.println(sidebar);
 
             //ON ENVOIE LA PARTIE INTERNE ET SPECIFIQUE A LA PAGE
             out.println("<div class=\"contenu\" id=\"contMagasins\">");
+            out.println("<h1>Consulter les magasins</h1>");
 
             try {
                 //CONNEXION A LA BASE DE DONNEES.
@@ -30,13 +31,15 @@ public class contMagasins extends HttpServlet {
                 bdd c = new bdd();
                 Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
+                int calculCA =0;
+
                 //ON RECUPERE LE CONTENU DES CARDS DANS LA BDD
-                String sql = "SELECT * FROM magasin AS m INNER JOIN gerant AS g ON m.id_gerant = g.id_gerant ORDER BY id ASC;";
+                String sql = "SELECT * "+
+                    "FROM magasin AS m, gerant AS g"+
+                    "WHERE m.id_gerant = g.id_gerant "+
+                    "ORDER BY id ASC;";
                 Statement stat = conn.createStatement();
                 ResultSet rs = stat.executeQuery(sql);
-                String sqldeux;
-                Statement statdeux;
-                ResultSet rsdeux;
                 String gerant="";
 
                 //ON AFFICHE LES CARDS
@@ -48,7 +51,7 @@ public class contMagasins extends HttpServlet {
                     out.println("<h5 class=\"card-title\">"+rs.getString("nom_magasin")+"</h5>");
                     out.println("<h6 class=\"card-subtitle mb-2 text-muted\">"+rs.getString("nom_gerant")+" " +rs.getString("prenom_gerant")+"</h6>");
                     out.println("<p class=\"card-text\">"+rs.getString("adresse_magasin")+"</p>");
-                    out.println("<p class=\"card-text\">Valeur totale : "+rs.getInt("CA_magasin")+" €</p>");
+                    out.println("<p class=\"card-text\">Valeur totale : "+calculCA+" €</p>");
                     out.println("<p class=\"card-text\">"+rs.getString("remarques_magasin")+"</p>");
 
                     out.println("<a href=\"contGerant.html\" class=\"btn btn-info\">Gérant</a>");
@@ -63,7 +66,7 @@ public class contMagasins extends HttpServlet {
             }catch(Exception e){
                 out.println(e.getMessage());
             }
-            String cookies = HtmlEscape.unescapeHtml(include.getCookies());
+            String cookies = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.COOKIES));
             out.println(cookies);
 
             out.println("</body>");
