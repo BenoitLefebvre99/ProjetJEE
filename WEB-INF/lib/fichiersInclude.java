@@ -4,9 +4,7 @@ public enum fichiersInclude {
     NAVBAR("navbar.html"),
     HEAD("head.html"),
     SIDEBAR("sidebar.html"),
-    FORMAJOMAGASIN("formAjoMagasin.html"),
-    FORMAJOGERANT("formAjoGerant.html"),
-    FORMAJOFOURNITURES("formAjoFournitures.html"),
+    ALERT("alert.html");
     HELP("help.html");
 
     private String url = "";
