@@ -82,7 +82,7 @@ public class ContAjoFournitures extends HttpServlet {
             while(rs.next()) {
                 tmp = new Fourniture(rs.getInt("id_fourniture"),
                         rs.getString("nom_fourniture"),
-                        rs.getInt("prix_unitaire"),
+                        rs.getInt("prix_unitaire_fourniture"),
                         false);
                 listFournitures.add(tmp);
             }
@@ -94,9 +94,9 @@ public class ContAjoFournitures extends HttpServlet {
         for(Magasin magEnCours: listMagasins){
             //ENTETE A CHAQUE MAGASIN
             //BOUTON CHOIX DU MAGASIN
-            out.println("<div class=\"form-row\" style=\"float:right;\" id=\"mag"+magEnCours.getId()+"\">");
+            out.println("<div class=\"form-row\" id=\"mag"+magEnCours.getId()+"\">");
             out.println("<h1>"+magEnCours.getNom()+"</h1>");
-            out.println("<div class=\"dropdown\" >");
+            out.println("<div class=\"dropdown\" style=\"right: 11%;position: absolute;\">");
             out.println("<button class=\"btn btn-info btn-lg dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">");
             out.println("Tous les magasins");
             out.println("</button>");
@@ -107,7 +107,7 @@ public class ContAjoFournitures extends HttpServlet {
             }
             out.println("</div>");
             out.println("</div>");
-            out.println("<button type=\"submit\" class=\"btn btn-lg btn-success\" style=\"float: right;\">Acheter <span class=\"badge badge-light\">4</span></button>");
+            out.println("<button type=\"submit\" class=\"btn btn-lg btn-success\" style=\"right: 1%;position: absolute;\">Acheter</button>");
             out.println("</div>");
 
             //LISTE POUR CHAQUE MAGASIN
@@ -138,7 +138,7 @@ public class ContAjoFournitures extends HttpServlet {
 
                     //ON RECUPERE TOUS LES MAGASINS
                     String sql = "SELECT * "+
-                            "FROM magasin_possede_fourniture" +
+                            "FROM magasin_possede_fourniture " +
                             "WHERE id_fourniture = '"+f.getId()+"'" +
                             "AND id_magasin = '"+magEnCours.getId()+"';";
                     Statement stat = conn.createStatement();
@@ -165,7 +165,7 @@ public class ContAjoFournitures extends HttpServlet {
                             out.println("</td>");
 
                             out.println("<td>");
-                            out.println("<input type=\"number\" name=\"f"+magEnCours.getId()+f.getId()+"\" value ="0"/>");
+                            out.println("<input type=\"number\" name=\"f"+magEnCours.getId()+f.getId()+"\" value =\"0\"/>");
                             out.println("</td>");
 
                             out.println("<td>");
@@ -185,6 +185,7 @@ public class ContAjoFournitures extends HttpServlet {
         }
 
         out.println("</form>");
+        out.println("</div>");
         out.println("</div>");
         out.println("</div>");
         out.println("</div>");

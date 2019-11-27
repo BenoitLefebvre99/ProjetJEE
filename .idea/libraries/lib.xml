@@ -1,10 +1,10 @@
 <component name="libraryTable">
   <library name="lib">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/servlet-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/unbescape-1.1.6.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/WEB-INF/lib/postgresql-jdbc.jar!/" />
       <root url="jar://$PROJECT_DIR$/WEB-INF/lib/commons-io-2.6.jar!/" />
-      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/unbescape-1.1.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/WEB-INF/lib/servlet-api.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

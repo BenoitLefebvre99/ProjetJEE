@@ -4,7 +4,7 @@
 --
 -- Structure de la table Fourniture
 --
-DROP TABLE IF EXISTS Fourniture;
+DROP TABLE IF EXISTS fourniture;
 CREATE TABLE fourniture (
   id_fourniture SERIAL,
   nom_fourniture varchar(30) NOT NULL,
@@ -59,13 +59,14 @@ INSERT INTO gerant (id_gerant, nom_gerant, prenom_gerant, id_statut, remarques_g
 --
 -- Structure de la table Magasin
 --
-DROP TABLE IF EXISTS Magasin;
+DROP TABLE IF EXISTS magasin;
 CREATE TABLE magasin (
   id SERIAL,
   nom_magasin varchar(100) NOT NULL,
   id_gerant INTEGER NOT NULL,
   adresse_magasin text NOT NULL,
   remarques_magasin text NOT NULL,
+  CA int NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -73,9 +74,9 @@ CREATE TABLE magasin (
 -- Déchargement des données de la table Magasin
 --
 
-INSERT INTO magasin (id, nom_magasin, id_gerant, adresse_magasin, remarques_magasin) VALUES
-(1, 'Ollivander', 5, 'Quelque part dans le monde des sorciers.', 'Il existe pas vraiment en fait...'),
-(2, 'Pokéshop', 2, 'Quelque part sur Khoto', 'Il existe pas vraiment non plus à vrai dire...');
+INSERT INTO magasin (id, nom_magasin, id_gerant, adresse_magasin, remarques_magasin, CA) VALUES
+(1, 'Ollivander', 5, 'Quelque part dans le monde des sorciers.', 'Il existe pas vraiment en fait...',500000),
+(2, 'Pokéshop', 2, 'Quelque part sur Khoto', 'Il existe pas vraiment non plus à vrai dire...',15000);
 
 -- --------------------------------------------------------
 

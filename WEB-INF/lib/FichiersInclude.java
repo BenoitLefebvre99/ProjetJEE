@@ -1,5 +1,5 @@
 public enum FichiersInclude {
-    INDEX("Index.html"),
+    INDEX("index.html"),
     COOKIES("cookies.html"),
     NAVBAR("navbar.html"),
     HEAD("head.html"),

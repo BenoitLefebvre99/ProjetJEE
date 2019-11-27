@@ -20,5 +20,5 @@ public class Fourniture {
     public int getPrix_unitaire(){
         return this.prix_unitaire;
     }
-    public boolean getRecent(){return this.recent}
+    public boolean getRecent(){return this.recent;}
 }

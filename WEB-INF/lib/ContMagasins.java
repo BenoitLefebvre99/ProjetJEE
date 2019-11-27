@@ -33,13 +33,13 @@ public class ContMagasins extends HttpServlet {
                 Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
                 //ON RECUPERE LE NOMBRE DE MAGASINS CONTENUS PAR LA BDD
-                ArrayList<CA> listCA = new ArrayList<CA>();
+                ArrayList<Valeur> listValeur = new ArrayList<Valeur>();
                 String sql = "SELECT * "+
                     "FROM magasin;";
                 Statement stat = conn.createStatement();
                 ResultSet rs = stat.executeQuery(sql);
                 while(rs.next()){
-                    listCA.add(new CA(rs.getInt("id")));
+                    listValeur.add(new Valeur(rs.getInt("id")));
                 }
                 
                 //ON RECUPERE LE CONTENU DES CARDS DANS LA BDD
@@ -59,11 +59,13 @@ public class ContMagasins extends HttpServlet {
                     out.println("<h6 class=\"card-subtitle mb-2 text-muted\">"+rs.getString("nom_gerant")+" " +rs.getString("prenom_gerant")+"</h6>");
                     out.println("<p class=\"card-text\">"+rs.getString("adresse_magasin")+"</p>");
 
-                    for(int i=0; i<listCA.size(); i++){
-                        if(listCA.get(i).isItMe(rs.getInt("id")))
-                            out.println("<p class=\"card-text\">Valeur totale : "+listCA.get(i).getChiffreAffaire()+" euros.</p>");
+                    for(int i = 0; i< listValeur.size(); i++){
+                        if(listValeur.get(i).isItMe(rs.getInt("id")))
+                            out.println("<p class=\"card-text\">Valeur totale : "+ listValeur.get(i).getValeur()+" euros.</p>");
                     }
-                    
+
+                    out.println("<p class=\"card-text\">Chiffre d'affaires : "+ rs.getInt("CA")+" euros.</p>");
+
                     out.println("<p class=\"card-text\">"+rs.getString("remarques_magasin")+"</p>");
 
                     out.println("<a href=\"ContGerant.html\" class=\"btn btn-info\">Gérant</a>");

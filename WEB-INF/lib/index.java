@@ -4,8 +4,8 @@ import javax.servlet.annotation.*;
 import java.io.*;
 
 import org.unbescape.html.HtmlEscape;
-@WebServlet("/Index")
-public class Index extends HttpServlet {
+@WebServlet("/index")
+public class index extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {
             ContIntegrer include = new ContIntegrer();
