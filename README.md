@@ -60,7 +60,7 @@ Il faut mettre un "x" pour valider la tâche quand vous avez fini.
 * [ ]  /createCookie crée un cookie de durée 1jour appelé "TermsAgreed" BENOIT
 * [x]  ajouter bouton "J'accepte" (Bootstrap 'Info') -> /createCookie BENOIT
 * [ ]  la bannière cookies.html doit disparaître lorsqu'un cookie non périmé est présent BENOIT
-* [ ]  /formAjoGerant BENOIT
+* [x]  /formAjoGerant BENOIT
 * [x]  /formAjoMagasins BENOIT
-* [ ]  /formAjoFournitures
+* [x]  /formAjoFournitures BENOIT
 * [ ]  généraliser l'url dans contInteger.java
