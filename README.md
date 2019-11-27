@@ -61,6 +61,6 @@ Il faut mettre un "x" pour valider la tâche quand vous avez fini.
 * [x]  ajouter bouton "J'accepte" (Bootstrap 'Info') -> /createCookie BENOIT
 * [ ]  la bannière cookies.html doit disparaître lorsqu'un cookie non périmé est présent BENOIT
 * [ ]  /formAjoGerant
-* [ ]  /formAjoMagasins
+* [x]  /formAjoMagasins
 * [ ]  /formAjoFournitures
 * [ ]  généraliser l'url dans contInteger.java
