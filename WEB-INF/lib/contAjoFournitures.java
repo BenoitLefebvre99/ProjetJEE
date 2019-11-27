@@ -82,7 +82,8 @@ public class contAjoFournitures extends HttpServlet {
             while(rs.next()) {
                 tmp = new fourniture(rs.getInt("id_fourniture"),
                         rs.getString("nom_fourniture"),
-                        rs.getInt("prix_unitaire"));
+                        rs.getInt("prix_unitaire"),
+                        false);
                 listFournitures.add(tmp);
             }
         }catch(Exception e){
@@ -127,7 +128,7 @@ public class contAjoFournitures extends HttpServlet {
                 for(fourniture f: listFournitures){
                     out.println("<tr>");
                     out.println("<th scope=\"row\">"+f.getNom());
-                    out.println("<span class=\\\"badge badge-secondary\\\">Nouveau</span>");
+                    if(f.getRecent()) out.println("<span class=\\\"badge badge-secondary\\\">Nouveau</span>");
                     out.println("</th>");
 
                     //CONNEXION A LA BASE DE DONNEES.
