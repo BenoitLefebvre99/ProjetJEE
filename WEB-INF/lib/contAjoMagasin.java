@@ -35,7 +35,7 @@ public class contAjoMagasin extends HttpServlet {
         out.println("<div class=\"card-body\">");
 
         //FORMULAIRE
-        out.println("<form method=\"POST\" action=\"traitementAjoutMagasin\">");
+        out.println("<form method=\"POST\" action=\"/traitementAjoutMagasin\">");
         out.println("<div class=\"form-group\">");
         out.println("<div class=\"form-row\">");
 

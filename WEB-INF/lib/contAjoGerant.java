@@ -21,10 +21,76 @@ public class contAjoGerant extends HttpServlet {
         String sidebar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.SIDEBAR));
         out.println(sidebar);
 
-        //ON ENVOIE LA PARTIE INTERNE ET SPECIFIQUE A LA PAGE
-        String formAjoGerant = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.FORMAJOGERANT));
-        out.println(formAjoGerant);
+        //PARTIE SPECIFIQUE A LA PAGE COURANTE
+        out.println("<div class=\"contenu\" id=\"contAjoGerant\">");
+        out.println("<h1>Ajouter un nouveau gérant</h1>");
 
+        //AFFICHAGE DES EVENTUELLES ALERTES
+        String alert = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.ALERT));
+        out.println(alert);
+
+        //AFFICHAGE DU FORMULAIRE
+        out.println("<div class=\"shadow p-3 mb-5 bg-white rounded\">");
+        out.println("<div class=\"card\" >");
+        out.println("<div class=\"card-body\">");
+        out.println("<form method=\"POST\" action=\"/traitementAjoutGerant\">");
+        out.println("<div class=\"form-group\">");
+        out.println("<div class=\"form-row\">");
+
+        //INPUT NOM GERANT
+        out.println("<div class=\"form-group col-md-4\">");
+        out.println("<label for=\"inputNomGerant\">Nom</label>");
+        out.println("<input type=\"input\" class=\"form-control\" id=\"inputNomGerant\" name=\"inputNomGerant\" placeholder=\"Nom\">");
+        out.println("</div>");
+
+        //INPUT PRENOM GERANT
+        out.println("<div class=\"form-group col-md-4\">");
+        out.println("<label for=\"inputPrenomGerant\">Prénom</label>");
+        out.println("<input type=\"input\" class=\"form-control\" id=\"inputPrenomGerant\" name=\"inputPrenomGerant\" placeholder=\"Prénom\">");
+        out.println("</div>");
+
+        //INPUT DE SELECTION DU STATUT
+        out.println("<div class=\"form-group col-md-4\">");
+        out.println("<label for=\"inputStatut\">Statut</label>");
+        out.println("<select id=\"inputStatut\" name=\"inputStatut\" class=\"form-control\">");
+            //RECUPERATION DE LA LISTE DES STATUTS
+            try {
+                //CONNEXION A LA BASE DE DONNEES.
+                Class.forName("org.postgresql.Driver");
+                bdd c = new bdd();
+                Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
+
+                //ON RECUPERE LA LISTE
+                String sql = "SELECT * "+
+                        "FROM statut;";
+                Statement stat = conn.createStatement();
+                ResultSet rs = stat.executeQuery(sql);
+                while(rs.next()){
+                    out.println("<option value=\""+rs.getInt("id_statut")+"\">"+rs.getString("nom_statut")+"</option>");
+                }
+                stat.close();
+            }catch(Exception e){
+                out.println(e.getMessage());
+            }
+        out.println("</select>");
+        out.println("</div>");
+        out.println("</div>");
+        out.println("</div>");
+
+        //INPUT DES REMARQUES SUR LE GERANT
+        out.println("<div class=\"form-group\">");
+        out.println("<label for=\"inputRemarque\">Remarques</label>");
+        out.println("<textarea class=\"form-control\" id=\"inputRemarque\" name=\"inputRemarque\" rows=\"5\" placeholder=\"Remarques...\"></textarea>");
+        out.println("</div>");
+
+        //BOUTON SUBMIT
+        out.println(" <button type=\"submit\" class=\"btn btn-success\" style=\"float: right;\">Créer</button>");
+
+        out.println("</form>");
+        out.println("</div>");
+        out.println("</div>");
+        out.println("</div>");
+        out.println("</div>");
 
         String cookies = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.COOKIES));
         out.println(cookies);
