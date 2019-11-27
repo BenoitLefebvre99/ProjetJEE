@@ -8,6 +8,8 @@
  Il est nécessaire d'exécuter le script WEB-INF/lib/progweb.sql . 
  Ce dernier contient la structure de la base de données mais aussi quelques exemples permettant de tester l'application.
  Il vous faut bien évidemment un serveur [Tomcat](https://tomcat.apache.org/download-70.cgi). 
+ 
+ ### Il est important de modifier l'url dans contInteger.java pour faire fonctionner les includes
 
 ### La tâche est maintenant simplifée grâce au script WEB-INF/compilation.sh qui éteint puis démarre tomcat8 et compile les fichiers 
 
@@ -61,3 +63,4 @@ Il faut mettre un "x" pour valider la tâche quand vous avez fini.
 * [ ]  /formAjoGerant
 * [ ]  /formAjoMagasins
 * [ ]  /formAjoFournitures
+* [ ]  généraliser l'url dans contInteger.java
