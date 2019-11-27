@@ -2,8 +2,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.*;
-@WebServlet("/createCookie")
-public class createCookie extends HttpServlet {
+@WebServlet("/CreateCookie")
+public class CreateCookie extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 
@@ -11,6 +11,6 @@ public class createCookie extends HttpServlet {
         miam.setMaxAge(60*60*24);
         res.addCookie(miam);
 
-        res.sendRedirect(req.getContextPath()+"/index");
+        res.sendRedirect(req.getContextPath()+"/Index");
     }
 }

@@ -4,25 +4,25 @@ import javax.servlet.annotation.*;
 import java.io.*;
 import java.sql.*;
 import org.unbescape.html.HtmlEscape;
-@WebServlet("/contFournitures")
-public class contFournitures extends HttpServlet {
+@WebServlet("/ContFournitures")
+public class ContFournitures extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {
-            contIntegrer include = new contIntegrer();
+            ContIntegrer include = new ContIntegrer();
             res.setContentType("text/html");
             PrintWriter out = res.getWriter();
             //ON ENVOIE LA FORME PROPRE AU SITE ET DISPONIBLE SUR TOUTES LES PAGES
             out.println("<html>");
-            String head = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.HEAD));
+            String head = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.HEAD));
             out.println(head);
             out.println("<body>");
-            String navbar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.NAVBAR));
+            String navbar = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.NAVBAR));
             out.println(navbar);
-            String sidebar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.SIDEBAR));
+            String sidebar = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.SIDEBAR));
             out.println(sidebar);
 
             //ON ENVOIE LA PARTIE INTERNE ET SPECIFIQUE A LA PAGE
-            out.println("<div class=\"contenu\" id=\"contFournitures\" >");
+            out.println("<div class=\"contenu\" id=\"ContFournitures\" >");
             out.println("<h1>Afficher les stocks <div class=\"dropdown\" style=\"float:right;\">");
 
             out.println("<button class=\"btn btn-info btn-lg dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">");
@@ -39,7 +39,7 @@ public class contFournitures extends HttpServlet {
             try {
                 //CONNEXION A LA BASE DE DONNEES.
                 Class.forName("org.postgresql.Driver");
-                bdd c = new bdd();
+                BDD c = new BDD();
                 Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
                 //ON RECUPERE LE CONTENU DES CARDS DANS LA BDD
@@ -65,8 +65,8 @@ public class contFournitures extends HttpServlet {
                     out.println("<hr>");
                     out.println("<p class=\"card-text\">Quantité : "+rs.getInt("quantite_stock")+"</p>");
                     out.println("<p class=\"card-text\">Prix Unitaire : "+rs.getInt("prix_unitaire_fourniture")+" €</p>");
-                    out.println("<a href=\"#contAjoFournitures\" class=\"btn btn-info\">Recommander</a>");
-                    out.println("<a href=\"#contAjoFournitures\" class=\"btn btn-info\">Vendre</a>");
+                    out.println("<a href=\"#ContAjoFournitures\" class=\"btn btn-info\">Recommander</a>");
+                    out.println("<a href=\"#ContAjoFournitures\" class=\"btn btn-info\">Vendre</a>");
                     out.println("</div>");
                     out.println("</div>");
                     out.println("</div>");
@@ -77,7 +77,7 @@ public class contFournitures extends HttpServlet {
             }catch(Exception e){
                 out.println(e.getMessage());
             }
-            String cookies = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.COOKIES));
+            String cookies = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.COOKIES));
             out.println(cookies);
 
             out.println("</body>");

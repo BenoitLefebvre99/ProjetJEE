@@ -2,9 +2,9 @@
 
 -- ------------------------------------------------------
 --
--- Structure de la table fourniture
+-- Structure de la table Fourniture
 --
-DROP TABLE IF EXISTS fourniture;
+DROP TABLE IF EXISTS Fourniture;
 CREATE TABLE fourniture (
   id_fourniture SERIAL,
   nom_fourniture varchar(30) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE fourniture (
 );
 
 --
--- Déchargement des données de la table fourniture
+-- Déchargement des données de la table Fourniture
 --
 
 INSERT INTO fourniture (id_fourniture, nom_fourniture, date_ajout_fourniture, prix_unitaire_fourniture) VALUES
@@ -57,9 +57,9 @@ INSERT INTO gerant (id_gerant, nom_gerant, prenom_gerant, id_statut, remarques_g
 -- --------------------------------------------------------
 
 --
--- Structure de la table magasin
+-- Structure de la table Magasin
 --
-DROP TABLE IF EXISTS magasin;
+DROP TABLE IF EXISTS Magasin;
 CREATE TABLE magasin (
   id SERIAL,
   nom_magasin varchar(100) NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE magasin (
 );
 
 --
--- Déchargement des données de la table magasin
+-- Déchargement des données de la table Magasin
 --
 
 INSERT INTO magasin (id, nom_magasin, id_gerant, adresse_magasin, remarques_magasin) VALUES

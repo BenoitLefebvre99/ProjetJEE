@@ -4,21 +4,21 @@ import javax.servlet.annotation.*;
 import java.io.*;
 import java.sql.*;
 import org.unbescape.html.HtmlEscape;
-@WebServlet("/contGerant")
-public class contGerant extends HttpServlet {
+@WebServlet("/ContGerant")
+public class ContGerant extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {
-            contIntegrer include = new contIntegrer();
+            ContIntegrer include = new ContIntegrer();
             res.setContentType("text/html");
             PrintWriter out = res.getWriter();
             //ON ENVOIE LA FORME PROPRE AU SITE ET DISPONIBLE SUR TOUTES LES PAGES
             out.println("<html>");
-            String head = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.HEAD));
+            String head = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.HEAD));
             out.println(head);
             out.println("<body>");
-            String navbar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.NAVBAR));
+            String navbar = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.NAVBAR));
             out.println(navbar);
-            String sidebar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.SIDEBAR));
+            String sidebar = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.SIDEBAR));
             out.println(sidebar);
 
             //ON ENVOIE LA PARTIE INTERNE ET SPECIFIQUE A LA PAGE
@@ -27,7 +27,7 @@ public class contGerant extends HttpServlet {
             try {
                 //CONNEXION A LA BASE DE DONNEES.
                 Class.forName("org.postgresql.Driver");
-                bdd c = new bdd();
+                BDD c = new BDD();
                 Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
                 //ON RECUPERE LE NOMBRE D'ENTREES DANS LA TABLE
@@ -75,7 +75,7 @@ public class contGerant extends HttpServlet {
             }catch(Exception e){
                 out.println(e.getMessage());
             }
-            String cookies = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.COOKIES));
+            String cookies = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.COOKIES));
             out.println(cookies);
 
             out.println("</body>");

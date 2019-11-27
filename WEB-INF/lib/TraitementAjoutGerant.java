@@ -4,8 +4,8 @@ import javax.servlet.annotation.*;
 import java.io.*;
 import java.sql.*;
 
-@WebServlet("/traitementAjoutGerant")
-public class traitementAjoutGerant extends HttpServlet {
+@WebServlet("/TraitementAjoutGerant")
+public class TraitementAjoutGerant extends HttpServlet {
         public void doPost(HttpServletRequest req, HttpServletResponse res) 
             throws ServletException, IOException {
 
@@ -14,7 +14,7 @@ public class traitementAjoutGerant extends HttpServlet {
                 try {
                     //CONNEXION A LA BASE DE DONNEES.
                     Class.forName("org.postgresql.Driver");
-                    bdd c = new bdd();
+                    BDD c = new BDD();
                     Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
                     //AJOUT DU MAGASIN DANS LA BDD
@@ -28,10 +28,10 @@ public class traitementAjoutGerant extends HttpServlet {
                     stat.close();
 
                     //ON REDIRIGE VERS LA PAGE DU FORMULAIRE AVEC SUCCES
-                    res.sendRedirect(req.getContextPath()+"/contAjoGerant#success");
+                    res.sendRedirect(req.getContextPath()+"/ContAjoGerant#success");
                 }catch(Exception e){
                     //ON REDIRIGE VERS LA PAGE DU FORMULAIRE AVEC ERREUR
-                    res.sendRedirect(req.getContextPath()+"/contAjoGerant#error");
+                    res.sendRedirect(req.getContextPath()+"/ContAjoGerant#error");
                 }
             }
 }

@@ -1,10 +1,10 @@
-public class fourniture {
+public class Fourniture {
     private int id;
     private String nom;
     private int prix_unitaire;
     private boolean recent;
 
-    public fourniture(int id, String nom, int prix_unitaire, boolean recent){
+    public Fourniture(int id, String nom, int prix_unitaire, boolean recent){
         this.id = id;
         this.nom = nom;
         this.prix_unitaire = prix_unitaire;

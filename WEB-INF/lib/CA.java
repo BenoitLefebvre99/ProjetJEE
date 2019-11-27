@@ -14,7 +14,7 @@ public class CA {
         try {
             //CONNEXION A LA BASE DE DONNEES.
             Class.forName("org.postgresql.Driver");
-            bdd c = new bdd();
+            BDD c = new BDD();
             Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
             

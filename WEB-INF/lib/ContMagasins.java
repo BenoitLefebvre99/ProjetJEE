@@ -5,21 +5,21 @@ import java.io.*;
 import java.sql.*;
 import org.unbescape.html.HtmlEscape;
 import java.util.ArrayList;
-@WebServlet("/contMagasins")
-public class contMagasins extends HttpServlet {
+@WebServlet("/ContMagasins")
+public class ContMagasins extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {
-            contIntegrer include = new contIntegrer();
+            ContIntegrer include = new ContIntegrer();
             res.setContentType("text/html");
             PrintWriter out = res.getWriter();
             //ON ENVOIE LA FORME PROPRE AU SITE ET DISPONIBLE SUR TOUTES LES PAGES
             out.println("<html>");
-            String head = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.HEAD));
+            String head = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.HEAD));
             out.println(head);
             out.println("<body>");
-            String navbar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.NAVBAR));
+            String navbar = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.NAVBAR));
             out.println(navbar);
-            String sidebar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.SIDEBAR));
+            String sidebar = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.SIDEBAR));
             out.println(sidebar);
 
             //ON ENVOIE LA PARTIE INTERNE ET SPECIFIQUE A LA PAGE
@@ -29,7 +29,7 @@ public class contMagasins extends HttpServlet {
             try {
                 //CONNEXION A LA BASE DE DONNEES.
                 Class.forName("org.postgresql.Driver");
-                bdd c = new bdd();
+                BDD c = new BDD();
                 Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
                 //ON RECUPERE LE NOMBRE DE MAGASINS CONTENUS PAR LA BDD
@@ -66,8 +66,8 @@ public class contMagasins extends HttpServlet {
                     
                     out.println("<p class=\"card-text\">"+rs.getString("remarques_magasin")+"</p>");
 
-                    out.println("<a href=\"contGerant.html\" class=\"btn btn-info\">Gérant</a>");
-                    out.println("<a href=\"contAjoFournitures.html\" class=\"btn btn-info\">Stocks</a>");
+                    out.println("<a href=\"ContGerant.html\" class=\"btn btn-info\">Gérant</a>");
+                    out.println("<a href=\"ContAjoFournitures.html\" class=\"btn btn-info\">Stocks</a>");
 
                     out.println("</div>");
                     out.println("</div>");
@@ -79,7 +79,7 @@ public class contMagasins extends HttpServlet {
                 out.println(e.getMessage());
             }
             out.println("</div>");
-            String cookies = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.COOKIES));
+            String cookies = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.COOKIES));
             out.println(cookies);
 
             out.println("</body>");

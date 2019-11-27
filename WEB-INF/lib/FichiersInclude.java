@@ -1,15 +1,15 @@
-public enum fichiersInclude {
-    INDEX("index.html"),
+public enum FichiersInclude {
+    INDEX("Index.html"),
     COOKIES("cookies.html"),
     NAVBAR("navbar.html"),
     HEAD("head.html"),
     SIDEBAR("sidebar.html"),
-    ALERT("alert.html");
+    ALERT("alert.html"),
     HELP("help.html");
 
     private String url = "";
 
-    fichiersInclude(String url){
+    FichiersInclude(String url){
         this.url = url;
     }
 

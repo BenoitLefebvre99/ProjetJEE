@@ -4,28 +4,28 @@ import javax.servlet.annotation.*;
 import java.io.*;
 
 import org.unbescape.html.HtmlEscape;
-@WebServlet("/index")
-public class index extends HttpServlet {
+@WebServlet("/Index")
+public class Index extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res)
         throws ServletException, IOException {
-            contIntegrer include = new contIntegrer();
+            ContIntegrer include = new ContIntegrer();
             res.setContentType("text/html");
             PrintWriter out = res.getWriter();
             //ON ENVOIE LA FORME PROPRE AU SITE ET DISPONIBLE SUR TOUTES LES PAGES
             out.println("<html>");
-            String head = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.HEAD));
+            String head = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.HEAD));
             out.println(head);
             out.println("<body>");
-            String navbar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.NAVBAR));
+            String navbar = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.NAVBAR));
             out.println(navbar);
-            String sidebar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.SIDEBAR));
+            String sidebar = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.SIDEBAR));
             out.println(sidebar);
 
             //ON ENVOIE LA PARTIE INTERNE ET SPECIFIQUE A LA PAGE
-            String index = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.INDEX));
+            String index = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.INDEX));
             out.println(index);
 
-            String cookies = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.COOKIES));
+            String cookies = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.COOKIES));
             out.println(cookies);
 
             out.println("</body>");

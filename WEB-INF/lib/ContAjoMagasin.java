@@ -4,29 +4,29 @@ import javax.servlet.annotation.*;
 import java.io.*;
 import java.sql.*;
 import org.unbescape.html.HtmlEscape;
-@WebServlet("/contAjoMagasin")
-public class contAjoMagasin extends HttpServlet {
+@WebServlet("/ContAjoMagasin")
+public class ContAjoMagasin extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        contIntegrer include = new contIntegrer();
+        ContIntegrer include = new ContIntegrer();
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
         //ON ENVOIE LA FORME PROPRE AU SITE ET DISPONIBLE SUR TOUTES LES PAGES
         out.println("<html>");
-        String head = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.HEAD));
+        String head = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.HEAD));
         out.println(head);
         out.println("<body>");
-        String navbar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.NAVBAR));
+        String navbar = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.NAVBAR));
         out.println(navbar);
-        String sidebar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.SIDEBAR));
+        String sidebar = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.SIDEBAR));
         out.println(sidebar);
 
         //ON ENVOIE LA PARTIE INTERNE ET SPECIFIQUE A LA PAGE
         out.println("<div class=\"contenu\" id=\"contAjoMagasin\">");
-        out.println("<h1>Créer un nouveau magasin</h1>");
+        out.println("<h1>Créer un nouveau Magasin</h1>");
 
         // Alertes à afficher au bon moment
-        String alert = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.ALERT));
+        String alert = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.ALERT));
         out.println(alert);
 
         //Il faut créer le champ invisible id
@@ -35,14 +35,14 @@ public class contAjoMagasin extends HttpServlet {
         out.println("<div class=\"card-body\">");
 
         //FORMULAIRE
-        out.println("<form method=\"POST\" action=\"/traitementAjoutMagasin\">");
+        out.println("<form method=\"POST\" action=\"/TraitementAjoutMagasin\">");
         out.println("<div class=\"form-group\">");
         out.println("<div class=\"form-row\">");
 
         //CHAMP NOM DE MAGASIN
         out.println("<div class=\"form-group col-md-8\">");
-        out.println("<label for=\"inputNomMagasin\">Nom du magasin</label>");
-        out.println("<input type=\"input\" class=\"form-control\" id=\"inputNomMagasin\" name=\"inputNomMagasin\" placeholder=\"Nom du magasin\">");
+        out.println("<label for=\"inputNomMagasin\">Nom du Magasin</label>");
+        out.println("<input type=\"input\" class=\"form-control\" id=\"inputNomMagasin\" name=\"inputNomMagasin\" placeholder=\"Nom du Magasin\">");
         out.println("</div>");
 
         //SELECTION DU GERANT
@@ -53,7 +53,7 @@ public class contAjoMagasin extends HttpServlet {
             try {
                 //CONNEXION A LA BASE DE DONNEES.
                 Class.forName("org.postgresql.Driver");
-                bdd c = new bdd();
+                BDD c = new BDD();
                 Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
                 //ON RECUPERE LA LISTE
@@ -77,7 +77,7 @@ public class contAjoMagasin extends HttpServlet {
         //INPUT DE L'ADRESSE DU MAGASIN
         out.println("<div class=\"form-row\">");
         out.println("<div class=\"form-group col-md-6\">");
-        out.println(" <label for=\"inputAdresse\">Adresse du magasin</label>");
+        out.println(" <label for=\"inputAdresse\">Adresse du Magasin</label>");
         out.println("<textarea class=\"form-control\" id=\"inputAdresse\" name=\"inputAdresse\" rows=\"4\" placeholder=\"Adresse...\"></textarea>");
         out.println("</div>");
 
@@ -98,7 +98,7 @@ public class contAjoMagasin extends HttpServlet {
         out.println("</div>");
 
         //Traitement de la page des cookies
-        String cookies = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.COOKIES));
+        String cookies = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.COOKIES));
         out.println(cookies);
 
         out.println("</body>");

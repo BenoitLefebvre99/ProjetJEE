@@ -1,10 +1,10 @@
 
-public class bdd {
+public class BDD {
     private String ip = "172.16.73.128";
     private String login = "tc";
     private String password = "tc";
 
-    public bdd() {
+    public BDD() {
 
     }
 

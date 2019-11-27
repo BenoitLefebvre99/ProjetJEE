@@ -6,21 +6,21 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import org.unbescape.html.HtmlEscape;
-@WebServlet("/contAjoFournitures")
-public class contAjoFournitures extends HttpServlet {
+@WebServlet("/ContAjoFournitures")
+public class ContAjoFournitures extends HttpServlet {
     public void service(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        contIntegrer include = new contIntegrer();
+        ContIntegrer include = new ContIntegrer();
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
         //ON ENVOIE LA FORME PROPRE AU SITE ET DISPONIBLE SUR TOUTES LES PAGES
         out.println("<html>");
-        String head = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.HEAD));
+        String head = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.HEAD));
         out.println(head);
         out.println("<body>");
-        String navbar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.NAVBAR));
+        String navbar = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.NAVBAR));
         out.println(navbar);
-        String sidebar = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.SIDEBAR));
+        String sidebar = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.SIDEBAR));
         out.println(sidebar);
 
         //ON ENVOIE LA PARTIE INTERNE ET SPECIFIQUE A LA PAGE
@@ -28,21 +28,21 @@ public class contAjoFournitures extends HttpServlet {
         out.println("<h1>Acheter une ressource</h1>");
 
         //AFFICHAGE DE L'EVENTUELLE ALERTE
-        String alert = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.ALERT));
+        String alert = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.ALERT));
         out.println(alert);
 
         //AFFICHAGE DU FORMULAIRE
         out.println("<div class=\"shadow p-3 mb-5 bg-white rounded\">");
         out.println("<div class=\"card\" >");
         out.println("<div class=\"card-body\">");
-        out.println("<form method=\"POST\" action=\"/traitementAjoutFournitures\">");
+        out.println("<form method=\"POST\" action=\"/TraitementAjoutFournitures\">");
 
         //RECUPERATION DE TOUS LES MAGASINS
-        ArrayList<magasin> listMagasins = new ArrayList<magasin>();;
+        ArrayList<Magasin> listMagasins = new ArrayList<Magasin>();;
         try{
             //CONNEXION A LA BASE DE DONNEES.
             Class.forName("org.postgresql.Driver");
-            bdd c = new bdd();
+            BDD c = new BDD();
             Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
             //ON RECUPERE TOUS LES MAGASINS
@@ -50,10 +50,10 @@ public class contAjoFournitures extends HttpServlet {
                     "FROM magasin;";
             Statement stat = conn.createStatement();
             ResultSet rs = stat.executeQuery(sql);
-            magasin tmp;
+            Magasin tmp;
 
             while(rs.next()) {
-                tmp = new magasin(rs.getInt("id"),
+                tmp = new Magasin(rs.getInt("id"),
                         rs.getString("nom_magasin"),
                         rs.getInt("id_gerant"),
                         rs.getString("adresse_magasin"),
@@ -65,11 +65,11 @@ public class contAjoFournitures extends HttpServlet {
         }
 
         //RECUPERATION DE TOUTES LES FOURNITURES
-        ArrayList<fourniture> listFournitures = new ArrayList<fourniture>();
+        ArrayList<Fourniture> listFournitures = new ArrayList<Fourniture>();
         try{
             //CONNEXION A LA BASE DE DONNEES.
             Class.forName("org.postgresql.Driver");
-            bdd c = new bdd();
+            BDD c = new BDD();
             Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
             //ON RECUPERE TOUS LES MAGASINS
@@ -77,10 +77,10 @@ public class contAjoFournitures extends HttpServlet {
                     "FROM fourniture;";
             Statement stat = conn.createStatement();
             ResultSet rs = stat.executeQuery(sql);
-            fourniture tmp;
+            Fourniture tmp;
 
             while(rs.next()) {
-                tmp = new fourniture(rs.getInt("id_fourniture"),
+                tmp = new Fourniture(rs.getInt("id_fourniture"),
                         rs.getString("nom_fourniture"),
                         rs.getInt("prix_unitaire"),
                         false);
@@ -91,7 +91,7 @@ public class contAjoFournitures extends HttpServlet {
         }
 
         // AFFICHAGE D'UNE LISTE PAR MAGASIN
-        for(magasin magEnCours: listMagasins){
+        for(Magasin magEnCours: listMagasins){
             //ENTETE A CHAQUE MAGASIN
             //BOUTON CHOIX DU MAGASIN
             out.println("<div class=\"form-row\" style=\"float:right;\" id=\"mag"+magEnCours.getId()+"\">");
@@ -102,7 +102,7 @@ public class contAjoFournitures extends HttpServlet {
             out.println("</button>");
             out.println("<div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">");
             //AFFICHAGE DE LA LISTE DE MAGASINS
-            for(magasin mag: listMagasins){
+            for(Magasin mag: listMagasins){
                 out.println("<a class=\"dropdown-item\" href=\"#mag"+mag.getId()+"\">"+mag.getNom()+"</a>");
             }
             out.println("</div>");
@@ -125,15 +125,15 @@ public class contAjoFournitures extends HttpServlet {
             //corps du tableau
             try{
                 out.println("<tbody>");
-                for(fourniture f: listFournitures){
+                for(Fourniture f: listFournitures){
                     out.println("<tr>");
                     out.println("<th scope=\"row\">"+f.getNom());
-                    if(f.getRecent()) out.println("<span class=\\\"badge badge-secondary\\\">Nouveau</span>");
+                    if(f.getRecent()) out.println("<span class=\"badge badge-secondary\">Nouveau</span>");
                     out.println("</th>");
 
                     //CONNEXION A LA BASE DE DONNEES.
                     Class.forName("org.postgresql.Driver");
-                    bdd c = new bdd();
+                    BDD c = new BDD();
                     Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
                     //ON RECUPERE TOUS LES MAGASINS
@@ -190,7 +190,7 @@ public class contAjoFournitures extends HttpServlet {
         out.println("</div>");
 
         //TRAITEMENT DU COOKIE TERMSAGREED
-        String cookies = HtmlEscape.unescapeHtml(include.getContent(fichiersInclude.COOKIES));
+        String cookies = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.COOKIES));
         out.println(cookies);
 
         out.println("</body>");
