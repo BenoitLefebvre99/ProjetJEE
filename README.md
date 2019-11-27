@@ -64,3 +64,4 @@ Il faut mettre un "x" pour valider la tâche quand vous avez fini.
 * [x]  /formAjoMagasins BENOIT
 * [x]  /formAjoFournitures BENOIT
 * [ ]  généraliser l'url dans contInteger.java
+* [ ]  implémenter la fonction de traitement de date /contAjoFourniture
