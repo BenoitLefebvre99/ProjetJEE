@@ -35,7 +35,7 @@ public class ContAjoMagasin extends HttpServlet {
         out.println("<div class=\"card-body\">");
 
         //FORMULAIRE
-        out.println("<form method=\"POST\" action=\"/TraitementAjoutMagasin\">");
+        out.println("<form method=\"POST\" action=\"TraitementAjoutMagasin\">");
         out.println("<div class=\"form-group\">");
         out.println("<div class=\"form-row\">");
 
@@ -89,7 +89,7 @@ public class ContAjoMagasin extends HttpServlet {
         out.println("</div>");
 
         //BOUTON SUBMIT
-        out.println("<button type=\"submit\" class=\"btn btn-success\" style=\"float: right;\">Créer</button>");
+        out.println("<button type=\"submit\" class=\"btn btn-success\" >Créer</button>");
 
         out.println("</form>");
         out.println("</div>");

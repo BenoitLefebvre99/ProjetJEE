@@ -77,6 +77,7 @@ public class ContFournitures extends HttpServlet {
             }catch(Exception e){
                 out.println(e.getMessage());
             }
+            out.println("</div>");
             String cookies = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.COOKIES));
             out.println(cookies);
 

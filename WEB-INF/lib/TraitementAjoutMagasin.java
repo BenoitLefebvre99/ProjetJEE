@@ -18,11 +18,11 @@ public class TraitementAjoutMagasin extends HttpServlet {
                     Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
                     //AJOUT DU MAGASIN DANS LA BDD
-                    String query = "INSERT INTO magasin VALUES ('', "+
-                        req.getParameter("inputNomMagasin") + ","+
-                        req.getParameter("inputGerant")+","+
-                        req.getParameter("inputAdresse")+","+
-                        req.getParameter("inputRemarque")+",0);";
+                    String query = "INSERT INTO magasin " +
+                            " VALUES ('"+req.getParameter("inputNomMagasin") + "', "+
+                        req.getParameter("inputGerant")+", '"+
+                        req.getParameter("inputAdresse")+"', '"+
+                        req.getParameter("inputRemarque")+"', 0);";
                     Statement stat = conn.createStatement();
                     stat.executeUpdate(query);
                     stat.close();

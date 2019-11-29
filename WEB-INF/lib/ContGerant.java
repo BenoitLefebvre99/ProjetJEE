@@ -45,7 +45,6 @@ public class ContGerant extends HttpServlet {
                 out.println("<table class=\"table table-striped\">");
                 out.println("<thead>");      
                 out.println("<tr>");
-                out.println("<th scope=\"col\">ID</th>");
                 out.println("<th scope=\"col\">Nom</th>");
                 out.println("<th scope=\"col\">Prénom</th>");
                 out.println("<th scope=\"col\">Statut</th>");
@@ -56,25 +55,35 @@ public class ContGerant extends HttpServlet {
                 out.println("<tbody>"); 
                 
                 //ON RECUPERE LE CONTENU DU TABLEAU
-                sql = "SELECT * FROM gerant ORDER BY id_gerant ASC;";
+                sql = "SELECT * FROM gerant AS g, statut AS s WHERE g.id_statut = s.id_statut ORDER BY id_gerant ASC;";
                 rs = stat.executeQuery(sql);
 
                 //ON AFFICHE LE TABLEAU
                 while(rs.next()){
                     out.println("<tr>");
-                    out.println("<th scope=\"row\">"+rs.getInt("id_gerant")+"</th>");
                     out.println("<td>"+rs.getString("nom_gerant")+"</td>");
                     out.println("<td>"+rs.getString("prenom_gerant")+"</td>");
-                    out.println("<td>"+rs.getInt("id_statut")+"</td>");
+                    out.println("<td>"+rs.getString("nom_statut")+"</td>");
                     out.println("<td>"+rs.getString("remarques_gerant")+"</td>");
-                    out.println("<td><button type=\"button\" class=\"btn btn-danger\">Supprimer</button></td>");
+                    out.println("<td>");
+                    out.println("<form method=\"POST\" action=\"Licencier\" >");
+                    out.println("<input type=\"hidden\" value=\""+rs.getInt("id_gerant")+"\" name=\"id\">");
+                    out.println("<button type=\"submit\" class=\"btn btn-outline-danger\">Supprimer</button>");
+                    out.println("</form>");
+                    out.println("</td>");
                     out.println("</tr>");
                 }
                 out.println("</tbody>");
+                out.println("</table>");
+                out.println("</div>");
+                out.println("</div>");
+                out.println("</div>");
                 stat.close();
             }catch(Exception e){
                 out.println(e.getMessage());
             }
+
+            out.println("</div>");
             String cookies = HtmlEscape.unescapeHtml(include.getContent(FichiersInclude.COOKIES));
             out.println(cookies);
 
