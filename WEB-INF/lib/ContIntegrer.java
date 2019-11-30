@@ -6,17 +6,19 @@ import java.io.IOException;
 
 import org.unbescape.html.HtmlEscape;
 public class ContIntegrer {
-    private File tmp = new File("/home/benoitlefebvre99/tomcat8/webapps/projetprogweb/");
+    private File tmp = new File("");
     private String path = tmp.getAbsolutePath()+"/";
     private BufferedReader bf;
     private StringBuilder sb;
     private String resp, line;
 
     public ContIntegrer(){
+        editLink();
         this.resp = "";
     }
 
     public String getContent(FichiersInclude choix){
+
         try {
             FileReader fr = new FileReader(this.path + choix.getUrl());
             this.bf = new BufferedReader(fr);
@@ -35,5 +37,8 @@ public class ContIntegrer {
         this.line="";
         return results;
     }
-   
+
+    private void editLink(){
+        this.path = this.path.substring(0, this.path.length()-4) + "/webapps/projetprogweb/";
+    }
 } 

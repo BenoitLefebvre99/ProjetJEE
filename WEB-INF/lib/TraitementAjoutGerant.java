@@ -18,11 +18,9 @@ public class TraitementAjoutGerant extends HttpServlet {
                     Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
                     //AJOUT DU MAGASIN DANS LA BDD
-                    String query = "INSERT INTO gerant VALUES ('', "+
-                        req.getParameter("inputNomGerant") + ","+
-                        req.getParameter("inputPrenomGerant")+","+
-                        req.getParameter("inputStatut")+","+
-                        req.getParameter("inputRemarque")+");";
+                    String query = "INSERT INTO gerant (id_gerant, nom_gerant, prenom_gerant, id_statut, remarques_gerant) VALUES " +
+                            "(DEFAULT, '"+req.getParameter("inputNomGerant")+"','"+req.getParameter("inputPrenomGerant")+"', "+req.getParameter("inputStatut")+", '"+req.getParameter("inputRemarque")+"');";
+
                     Statement stat = conn.createStatement();
                     stat.executeUpdate(query);
                     stat.close();

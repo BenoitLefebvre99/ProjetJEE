@@ -1,7 +1,9 @@
 #cookies {
     position: fixed;
     z-index: 1500;
-    width: 100%;
+    width: 90%;
     text-align: center;
     bottom: -1%;
+    box-shadow: 1px 1px 6px 0px black;
+    margin-left: 5%;
 }

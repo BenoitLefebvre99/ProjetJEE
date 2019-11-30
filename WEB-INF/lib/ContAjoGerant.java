@@ -33,41 +33,67 @@ public class ContAjoGerant extends HttpServlet {
         out.println("<div class=\"shadow p-3 mb-5 bg-white rounded\">");
         out.println("<div class=\"card\" >");
         out.println("<div class=\"card-body\">");
-        out.println("<form method=\"POST\" action=\"/TraitementAjoutGerant\">");
+
+        Gerant g = new Gerant(0,"","",0,"");
+
+        out.println("<form method=\"POST\" action=\"TraitementAjoutGerant\">");
         out.println("<div class=\"form-group\">");
         out.println("<div class=\"form-row\">");
+
+        try {
+            //CONNEXION A LA BASE DE DONNEES.
+            Class.forName("org.postgresql.Driver");
+            BDD c = new BDD();
+            Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
+
+            String sql;
+            Statement stat;
+            ResultSet rs;
+
+            try {
+
+                sql = "SELECT * FROM gerant WHERE id_gerant = " + req.getParameter("id") + " ;";
+                stat = conn.createStatement();
+                rs = stat.executeQuery(sql);
+
+                while (rs.next()) {
+                    g = new Gerant(rs.getInt("id_gerant"),
+                            rs.getString("nom_gerant"),
+                            rs.getString("prenom_gerant"),
+                            rs.getInt("id_statut"),
+                            rs.getString("remarques_gerant"));
+                }
+            }catch(Exception e){
+                out.println("erreur de récupération");
+            }
 
         //INPUT NOM GERANT
         out.println("<div class=\"form-group col-md-4\">");
         out.println("<label for=\"inputNomGerant\">Nom</label>");
-        out.println("<input type=\"input\" class=\"form-control\" id=\"inputNomGerant\" name=\"inputNomGerant\" placeholder=\"Nom\">");
+        out.println("<input type=\"input\" class=\"form-control\" id=\"inputNomGerant\" name=\"inputNomGerant\" placeholder=\"Nom\" value=\""+g.getNom()+"\">");
         out.println("</div>");
 
         //INPUT PRENOM GERANT
         out.println("<div class=\"form-group col-md-4\">");
         out.println("<label for=\"inputPrenomGerant\">Prénom</label>");
-        out.println("<input type=\"input\" class=\"form-control\" id=\"inputPrenomGerant\" name=\"inputPrenomGerant\" placeholder=\"Prénom\">");
+        out.println("<input type=\"input\" class=\"form-control\" id=\"inputPrenomGerant\" name=\"inputPrenomGerant\" placeholder=\"Prénom\" value=\""+g.getPrenom()+"\">");
         out.println("</div>");
 
         //INPUT DE SELECTION DU STATUT
         out.println("<div class=\"form-group col-md-4\">");
         out.println("<label for=\"inputStatut\">Statut</label>");
-        out.println("<select id=\"inputStatut\" name=\"inputStatut\" class=\"form-control\">");
+        out.println("<select id=\"inputStatut\" name=\"inputStatut\" class=\"form-control\" >");
             //RECUPERATION DE LA LISTE DES STATUTS
             try {
-                //CONNEXION A LA BASE DE DONNEES.
-                Class.forName("org.postgresql.Driver");
-                BDD c = new BDD();
-                Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
                 //ON RECUPERE LA LISTE
-                String sql = "SELECT * "+
+                sql = "SELECT * "+
                         "FROM statut;";
-                Statement stat = conn.createStatement();
-                ResultSet rs = stat.executeQuery(sql);
+                stat = conn.createStatement();
+                rs = stat.executeQuery(sql);
                 while(rs.next()){
-                    out.println("<option value=\""+rs.getInt("id_statut")+"\">"+rs.getString("nom_statut")+"</option>");
-                }
+                    if(rs.getInt("id_statut") == g.getId_statut()) out.println("<option value=\""+rs.getInt("id_statut")+"\" selected>"+rs.getString("nom_statut")+"</option>");
+                    else out.println("<option value=\""+rs.getInt("id_statut")+"\">"+rs.getString("nom_statut")+"</option>");                }
                 stat.close();
             }catch(Exception e){
                 out.println(e.getMessage());
@@ -80,11 +106,15 @@ public class ContAjoGerant extends HttpServlet {
         //INPUT DES REMARQUES SUR LE GERANT
         out.println("<div class=\"form-group\">");
         out.println("<label for=\"inputRemarque\">Remarques</label>");
-        out.println("<textarea class=\"form-control\" id=\"inputRemarque\" name=\"inputRemarque\" rows=\"5\" placeholder=\"Remarques...\"></textarea>");
+        out.println("<textarea class=\"form-control\" id=\"inputRemarque\" name=\"inputRemarque\" rows=\"5\" placeholder=\"Remarques...\">"+g.getRemarques()+"</textarea>");
         out.println("</div>");
 
         //BOUTON SUBMIT
         out.println(" <button type=\"submit\" class=\"btn btn-success\" style=\"float: right;\">Créer</button>");
+
+        }catch(Exception e){
+            out.println(e.getMessage());
+        }
 
         out.println("</form>");
         out.println("</div>");

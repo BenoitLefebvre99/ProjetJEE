@@ -18,14 +18,15 @@ public class TraitementAjoutMagasin extends HttpServlet {
                     Connection conn = DriverManager.getConnection(c.getUrl(), c.getLogin(), c.getPassword());
 
                     //AJOUT DU MAGASIN DANS LA BDD
-                    String query = "INSERT INTO magasin " +
-                            " VALUES ('"+req.getParameter("inputNomMagasin") + "', "+
-                        req.getParameter("inputGerant")+", '"+
-                        req.getParameter("inputAdresse")+"', '"+
-                        req.getParameter("inputRemarque")+"', 0);";
+                    String query = "INSERT INTO magasin (id,nom_magasin, id_gerant, adresse_magasin, remarques_magasin, CA) VALUES " +
+                            "(DEFAULT, '"+req.getParameter("inputNomMagasin")+"', " +
+                            " '"+req.getParameter("inputGerant")+"', " +
+                            " '"+req.getParameter("inputAdresse")+"', " +
+                            " '"+req.getParameter("inputRemarque")+"',500);";
                     Statement stat = conn.createStatement();
                     stat.executeUpdate(query);
                     stat.close();
+                    conn.close();
 
                     //ON REDIRIGE VERS LA PAGE DU FORMULAIRE AVEC SUCCES
                     res.sendRedirect(req.getContextPath()+"/ContAjoMagasin#success");

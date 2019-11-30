@@ -48,7 +48,8 @@ public class ContGerant extends HttpServlet {
                 out.println("<th scope=\"col\">Nom</th>");
                 out.println("<th scope=\"col\">Prénom</th>");
                 out.println("<th scope=\"col\">Statut</th>");
-                out.println("<th scope=\"col\">Remarques</th>");        
+                out.println("<th scope=\"col\">Remarques</th>");
+                out.println("<th scope=\"col\">Modifier</th>");
                 out.println("<th scope=\"col\">Suppression</th>");
                 out.println("</tr>");
                 out.println("</thead>");  
@@ -65,6 +66,12 @@ public class ContGerant extends HttpServlet {
                     out.println("<td>"+rs.getString("prenom_gerant")+"</td>");
                     out.println("<td>"+rs.getString("nom_statut")+"</td>");
                     out.println("<td>"+rs.getString("remarques_gerant")+"</td>");
+                    out.println("<td>");
+                    out.println("<form method=\"POST\" action=\"ContAjoGerant\" >");
+                    out.println("<input type=\"hidden\" value=\""+rs.getInt("id_gerant")+"\" name=\"id\">");
+                    out.println("<button type=\"submit\" class=\"btn btn-outline-info\">Modfier</button>");
+                    out.println("</form>");
+                    out.println("</td>");
                     out.println("<td>");
                     out.println("<form method=\"POST\" action=\"Licencier\" >");
                     out.println("<input type=\"hidden\" value=\""+rs.getInt("id_gerant")+"\" name=\"id\">");

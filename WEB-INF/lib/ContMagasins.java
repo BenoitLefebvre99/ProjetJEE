@@ -68,8 +68,15 @@ public class ContMagasins extends HttpServlet {
 
                     out.println("<p class=\"card-text\">"+rs.getString("remarques_magasin")+"</p>");
 
-                    out.println("<a href=\"ContGerant.html\" class=\"btn btn-info\">Gérant</a>");
-                    out.println("<a href=\"ContAjoFournitures.html\" class=\"btn btn-info\">Stocks</a>");
+                    out.println("<form method=\"POST\" action=\"ContAjoMagasin\" style=\"display: inline-block;\">");
+                    out.println("<input type=\"hidden\" value=\""+rs.getInt("id")+"\" name=\"id\">");
+                    out.println("<button type=\"submit\" class=\"btn btn-outline-info\">Modifier</button>");
+                    out.println("</form>");
+
+                    out.println("<form method=\"POST\" action=\"SuppMagasin\" style=\"display: inline-block;\">");
+                    out.println("<input type=\"hidden\" value=\""+rs.getInt("id")+"\" name=\"id\">");
+                    out.println("<button type=\"submit\" class=\"btn btn-outline-danger\">Supprimer</button>");
+                    out.println("</form>");
 
                     out.println("</div>");
                     out.println("</div>");
