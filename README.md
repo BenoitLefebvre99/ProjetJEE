@@ -48,13 +48,13 @@ Lien de dépannage : [lien](https://confluence.atlassian.com/jirakb/error-connec
 Il faut mettre un "x" pour valider la tâche quand vous avez fini.
 * [ ]  Configurer le fichier [ WEB-INF/web.xml](https://cloud.google.com/appengine/docs/standard/java/config/webxml?hl=fr) (redirection des pages et accueil sur /index) BENOIT
 * [x]  /contMagasins (CA calculé par rapport aux fournitures) BENOIT
-* [ ]  /contHelp (compléter les trois parties de présentation)
+* [ ]  /contHelp (compléter les trois parties de présentation) OPTIONNEL
 * [ ]  /contFournitures (mettre liens)
-* [ ]  /contGerant (mettre lien "supprimer" -> /licencier)
-* [ ]  /licencier (changer le statut d'un gérant)
-* [ ]  /traitementAjoutFourniture
-* [ ]  /traitementAjoutGerant
-* [ ]  /traitementAjoutMagasin
+* [x]  /contGerant (mettre lien "supprimer" -> /licencier) BENOIT
+* [x]  /licencier (changer le statut d'un gérant) BENOIT
+* [x]  /traitementAjoutFourniture BENOIT
+* [x]  /traitementAjoutGerant BENOIT
+* [x]  /traitementAjoutMagasin BENOIT
 * [ ]  compatibilité windows (compilation.sh -> compilation.bat) OPTIONNEL
 * [ ]  faire un favicon.ico ... stylé de préférences
 * [ ]  /createCookie crée un cookie de durée 1jour appelé "TermsAgreed" BENOIT
@@ -63,5 +63,5 @@ Il faut mettre un "x" pour valider la tâche quand vous avez fini.
 * [x]  /formAjoGerant BENOIT
 * [x]  /formAjoMagasins BENOIT
 * [x]  /formAjoFournitures BENOIT
-* [ ]  généraliser l'url dans contInteger.java
+* [x]  généraliser l'url dans contInteger.java BENOIT
 * [ ]  implémenter la fonction de traitement de date /contAjoFourniture
