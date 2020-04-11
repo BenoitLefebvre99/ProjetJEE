@@ -1,7 +1,7 @@
 # Projetprogweb
 
- Bienvenue sur notre projet de programmation web : [LIEN DE Mr LANCIERI](https://www.iut-info.univ-lille.fr/~lancieri/cours/progweb/)
- JAVA 1.8.0_231
+ Bienvenue sur notre projet de programmation web.
+ Membres de l'équipe : Jacquot William, Marcant Aimé, Diallo Omar.
 
 ## Pour démarrer le projet 
 
@@ -42,26 +42,3 @@ export CLASSPATH
 
 Il faut se connecter en ssh sur votre VM et modifier le fichier pg_hba.conf.
 Lien de dépannage : [lien](https://confluence.atlassian.com/jirakb/error-connecting-to-database-fatal-no-pg_hba-conf-entry-for-host-x-x-x-x-user-jiradbuser-database-jiradb-ssl-off-950801726.html)
-
-## Travail restant
-### Mettez votre nom à côté de la tâche sélectionnée et contactez moi si vous avez des questions 
-Il faut mettre un "x" pour valider la tâche quand vous avez fini.
-* [ ]  Configurer le fichier [ WEB-INF/web.xml](https://cloud.google.com/appengine/docs/standard/java/config/webxml?hl=fr) (redirection des pages et accueil sur /index) BENOIT
-* [x]  /contMagasins (CA calculé par rapport aux fournitures) BENOIT
-* [ ]  /contHelp (compléter les trois parties de présentation) OPTIONNEL
-* [ ]  /contFournitures (mettre liens)
-* [x]  /contGerant (mettre lien "supprimer" -> /licencier) BENOIT
-* [x]  /licencier (changer le statut d'un gérant) BENOIT
-* [x]  /traitementAjoutFourniture BENOIT
-* [x]  /traitementAjoutGerant BENOIT
-* [x]  /traitementAjoutMagasin BENOIT
-* [ ]  compatibilité windows (compilation.sh -> compilation.bat) OPTIONNEL
-* [ ]  faire un favicon.ico ... stylé de préférences
-* [ ]  /createCookie crée un cookie de durée 1jour appelé "TermsAgreed" BENOIT
-* [x]  ajouter bouton "J'accepte" (Bootstrap 'Info') -> /createCookie BENOIT
-* [ ]  la bannière cookies.html doit disparaître lorsqu'un cookie non périmé est présent BENOIT
-* [x]  /formAjoGerant BENOIT
-* [x]  /formAjoMagasins BENOIT
-* [x]  /formAjoFournitures BENOIT
-* [x]  généraliser l'url dans contInteger.java BENOIT
-* [ ]  implémenter la fonction de traitement de date /contAjoFourniture
